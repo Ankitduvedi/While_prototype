@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:whileapp/screens/auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:whileapp/screens/chat.dart';
+import 'package:whileapp/screens/home.dart';
 import 'package:whileapp/screens/splash.dart';
 import 'firebase_options.dart';
 
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
             return const SplashScreen();
           }
           if (snapshot.hasData) {
-            return const ChatScreen();
+            return HomeScreen();
           }
           return const AuthScreen();
         },
