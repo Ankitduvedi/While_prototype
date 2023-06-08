@@ -33,6 +33,11 @@ class ChatMessages extends StatelessWidget {
         }
         final loadedMessages = chatSnapshots.data!.docs;
         return ListView.builder(
+          padding: const EdgeInsets.only(
+            bottom: 40,
+            left: 13,
+            right: 13,
+          ),
           itemCount: loadedMessages.length,
           itemBuilder: (ctx, index) => Text(
             loadedMessages[index].data()['text'],
