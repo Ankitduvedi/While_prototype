@@ -21,12 +21,12 @@ class _NewMessageState extends State<NewMessage> {
   }
 
   void _submitMessage() async {
-    FocusScope.of(context).unfocus();
-    _messageController.clear();
     final enteredMessage = _messageController.text;
     if (enteredMessage.trim().isEmpty) {
       return;
     }
+    FocusScope.of(context).unfocus();
+    _messageController.clear();
     // send to firebase
 
     final user = FirebaseAuth.instance.currentUser!;
