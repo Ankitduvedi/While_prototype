@@ -9,6 +9,22 @@ class NewMessage extends StatefulWidget {
 }
 
 class _NewMessageState extends State<NewMessage> {
+  var _messageController = TextEditingController();
+  @override
+  void dispose() {
+    _messageController.dispose();
+    super.dispose();
+  }
+
+  void _submitMessage() {
+    final enteredMessage = _messageController.text;
+    if (enteredMessage.trim().isEmpty) {
+      return;
+    }
+    // send to firebase
+    _messageController.clear();
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -21,11 +37,15 @@ class _NewMessageState extends State<NewMessage> {
       child: Row(children: [
         Expanded(
           child: TextField(
+            controller: _messageController,
             textCapitalization: TextCapitalization.sentences,
+            autocorrect: true,
+            enableSuggestions: true,
+            decoration: const InputDecoration(labelText: 'Send a message ...'),
           ),
         ),
         IconButton(
-            onPressed: () {},
+            onPressed: _submitMessage,
             icon: Icon(
               Icons.send,
               color: Theme.of(context).colorScheme.primary,
