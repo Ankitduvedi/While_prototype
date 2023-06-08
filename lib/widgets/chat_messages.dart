@@ -8,7 +8,13 @@ class ChatMessages extends StatelessWidget {
   Widget build(BuildContext context) {
     //stream builder to automatically show new message
     return StreamBuilder(
-      stream: FirebaseFirestore.instance.collection('chat').snapshots(),
+      stream: FirebaseFirestore.instance
+          .collection('chat')
+          .orderBy(
+            'createdAt',
+            descending: false,
+          )
+          .snapshots(),
       builder: (ctx, chatSnapshots) {
         if (chatSnapshots.connectionState == ConnectionState.waiting) {
           return const Center(
