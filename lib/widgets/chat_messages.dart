@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:flutter/material.dart';
 import 'package:whileapp/message_bubble.dart';
 
@@ -47,7 +47,7 @@ class ChatMessages extends StatelessWidget {
           itemBuilder: (ctx, index) {
             final chatMessage = loadedMessages[index].data();
             final nextChatMessage = index + 1 < loadedMessages.length
-                ? loadedMessages[index].data()
+                ? loadedMessages[index + 1].data()
                 : null;
             final currentMessageUserId = chatMessage['userId'];
             final nextMessageUserId =
